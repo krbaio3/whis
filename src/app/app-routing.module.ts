@@ -5,11 +5,27 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: '**', redirectTo: '' },
+// Rutas hijas
+import { dashboardRoutes } from './dashboard/dashboard.routing';
+
+const APP_ROUTES: Routes = [
+  {
+    path: '',
+    component: DashboardComponent,
+    children: dashboardRoutes
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 
   //{ path: 'path/:routeParam', component: MyComponent },
   //{ path: 'staticPath', component: ... },
@@ -19,7 +35,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(APP_ROUTES, {
+      useHash: true, // quitar para que desaparezca el hash de la ruta
+      enableTracing: true
+    })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

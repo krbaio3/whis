@@ -2,12 +2,12 @@
   <ul class="nav">
     <li class="nav-item nav-profile">
       <div class="nav-link">
-        
+
         <div class="user-wrapper">
           <div class="profile-image">
             <img src="assets/images/faces/face1.jpg" alt="profile image">
           </div>
-          
+
           <div class="text-wrapper">
             <p class="profile-name">Cristobal Colón</p>
             <div>
@@ -15,37 +15,37 @@
             </div>
           </div>
         </div>
-        
+
       </div>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link">
-        <i class="menu-icon fa fa-tachometer-alt"></i>
+      <a class="nav-link" routerLink="/">
+        <fa-icon [icon]="['fas', 'tachometer-alt']" class="menu-icon"></fa-icon>
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link">
-        <i class="menu-icon fa fa-clipboard-list"></i>
+      <a class="nav-link" routerLink="/ingresos-gastos">
+        <fa-icon [icon]="['fas', 'clipboard-list']" class="menu-icon"></fa-icon>
         <span class="menu-title">Ingresos y Egresos</span>
       </a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link">
-        <i class="menu-icon fa fa-table"></i>
+      <a class="nav-link" routerLink="/detail">
+        <fa-icon [icon]="['fas', 'table']" class="menu-icon"></fa-icon>
         <span class="menu-title">Detalle</span>
       </a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link cursor">
-        <i class="menu-icon fa fa-sign-out-alt"></i>
+      <a class="nav-link cursor" routerLink="/login">
+        <fa-icon [icon]="['fas', 'sign-out-alt']" class="menu-icon"></fa-icon>
         <span class="menu-title">Cerrar sesión</span>
       </a>
     </li>
-    
+
   </ul>
 </nav>

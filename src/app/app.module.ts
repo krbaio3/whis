@@ -4,10 +4,30 @@ import { NgModule } from '@angular/core';
 // Iconos
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCheck,
+  faClipboardList,
+  faSignOutAlt,
+  faTable,
+  faTachometerAlt,
+  faMoneyBillAlt,
+  faExclamationCircle,
+  faShippingFast,
+  faSave
+} from '@fortawesome/free-solid-svg-icons';
 
 // Add an icon to the library for convenient access in other components
-library.add(faCheck);
+library.add(
+  faCheck,
+  faClipboardList,
+  faSignOutAlt,
+  faTable,
+  faTachometerAlt,
+  faMoneyBillAlt,
+  faExclamationCircle,
+  faShippingFast,
+  faSave
+);
 
 // Angular Material Module
 // import { AngularMaterialModule } from './angular-material/angular-material.module';
