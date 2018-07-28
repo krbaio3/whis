@@ -15,7 +15,6 @@ script:
 - yarn ci:travis
 branches:
   only:
-  - master
   - develop
 notifications:
   email:
