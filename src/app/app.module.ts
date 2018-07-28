@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 // Iconos
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faCheck,
+  faCheckCircle,
   faClipboardList,
   faSignOutAlt,
   faTable,
@@ -18,7 +19,7 @@ import {
 
 // Add an icon to the library for convenient access in other components
 library.add(
-  faCheck,
+  faCheckCircle,
   faClipboardList,
   faSignOutAlt,
   faTable,
@@ -31,6 +32,13 @@ library.add(
 
 // Angular Material Module
 // import { AngularMaterialModule } from './angular-material/angular-material.module';
+
+// FireBase
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 // Components
 import { AppComponent } from './app.component';
@@ -60,7 +68,15 @@ import { AppRoutingModule } from './app-routing.module';
     NavbarComponent,
     SidebarComponent
   ],
-  imports: [BrowserModule, FontAwesomeModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    FontAwesomeModule,
+    AppRoutingModule,
+    FormsModule,
+    AngularFireModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

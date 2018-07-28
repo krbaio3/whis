@@ -12,4 +12,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(formulario: any): void {
+    console.log('entra', formulario);
+  }
+
 }
