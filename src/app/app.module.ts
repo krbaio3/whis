@@ -4,10 +4,30 @@ import { NgModule } from '@angular/core';
 // Iconos
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCheck,
+  faClipboardList,
+  faSignOutAlt,
+  faTable,
+  faTachometerAlt,
+  faMoneyBillAlt,
+  faExclamationCircle,
+  faShippingFast,
+  faSave
+} from '@fortawesome/free-solid-svg-icons';
 
 // Add an icon to the library for convenient access in other components
-library.add(faCheck);
+library.add(
+  faCheck,
+  faClipboardList,
+  faSignOutAlt,
+  faTable,
+  faTachometerAlt,
+  faMoneyBillAlt,
+  faExclamationCircle,
+  faShippingFast,
+  faSave
+);
 
 // Angular Material Module
 // import { AngularMaterialModule } from './angular-material/angular-material.module';
@@ -24,6 +44,9 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
+// Router
+import { AppRoutingModule } from './app-routing.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +60,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     NavbarComponent,
     SidebarComponent
   ],
-  imports: [BrowserModule, FontAwesomeModule],
+  imports: [BrowserModule, FontAwesomeModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })
