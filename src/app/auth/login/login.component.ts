@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+
 
 @Component({
   selector: 'app-login',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  constructor(public autSrv: AuthService) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  onSubmit(formLogin: any): void {
+    console.log(
+      'entra en login component',
+      formLogin
+    );
+    this.autSrv.logIn(formLogin.email, formLogin.password);
   }
-
 }
