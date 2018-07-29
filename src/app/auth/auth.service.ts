@@ -1,25 +1,34 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
 
+// Firebase
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore } from 'angularfire2/firestore';
 import * as firebase from 'firebase';
 
+// Manejo de Errres
 import Swal from 'sweetalert2';
 
+// rxjs
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+// Modelo
+import { User } from './models/user.model';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private afAuth: AngularFireAuth, private router: Router) {}
+  constructor(
+    private afAuth: AngularFireAuth,
+    private router: Router,
+    private afDB: AngularFirestore
+  ) {}
 
   initAuthListener(): void {
-
-    this.afAuth.authState.subscribe(
-      (firebaseUser: firebase.User) => {
-        console.log(firebaseUser);
-      }
-    );
-
+    this.afAuth.authState.subscribe((firebaseUser: firebase.User) => {
+      console.log(firebaseUser);
+    });
   }
 
   crearUsuario(nombre: string, email: string, password: string): void {
@@ -27,7 +36,20 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then(response => {
         console.log(response);
-        this.router.navigate(['/']);
+        const user: User = {
+          uid: response.user.uid,
+          nombre,
+          email: response.user.email
+        };
+
+        this.afDB
+          .doc(`${user.uid}/usuario`)
+          .set(user)
+          .then(() => this.router.navigate(['/']))
+          .catch(error => {
+            Swal('Error al Insertar Datos en Firebase', error.message, 'error');
+            // console.error(error);
+          });
       })
       .catch(error => {
         Swal('Error al Crear Usuario', error.message, 'error');
@@ -50,11 +72,23 @@ export class AuthService {
   }
 
   logOut() {
-    this.afAuth.auth.signOut()
+    this.afAuth.auth
+      .signOut()
       .then(() => {
         this.router.navigate(['/login']);
         Swal('LogOut', 'La sesión ha sido cerrada', 'success');
       })
       .catch(error => Swal('Error al Desconectar', error.message, 'error'));
+  }
+
+  isAuth(): Observable<boolean> {
+    return this.afAuth.authState.pipe(
+      map(firebaseUser => {
+        if (firebaseUser == null) {
+          this.router.navigate(['login']);
+        }
+        return firebaseUser != null;
+      })
+    );
   }
 }

@@ -8,11 +8,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 // Rutas hijas
 import { dashboardRoutes } from './dashboard/dashboard.routing';
 
+// Guards
+import { AuthGuardService } from './auth/auth-guard.service';
+
 const APP_ROUTES: Routes = [
   {
     path: '',
     component: DashboardComponent,
-    children: dashboardRoutes
+    children: dashboardRoutes,
+    canActivate: [AuthGuardService]
   },
   {
     path: 'login',
@@ -37,7 +41,7 @@ const APP_ROUTES: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(APP_ROUTES, {
-      useHash: true, // quitar para que desaparezca el hash de la ruta
+      useHash: false, // quitar para que desaparezca el hash de la ruta
       enableTracing: false
     })
   ],
