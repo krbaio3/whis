@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
 
+import * as firebase from 'firebase';
+
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -9,6 +11,16 @@ import Swal from 'sweetalert2';
 })
 export class AuthService {
   constructor(private afAuth: AngularFireAuth, private router: Router) {}
+
+  initAuthListener(): void {
+
+    this.afAuth.authState.subscribe(
+      (firebaseUser: firebase.User) => {
+        console.log(firebaseUser);
+      }
+    );
+
+  }
 
   crearUsuario(nombre: string, email: string, password: string): void {
     this.afAuth.auth
