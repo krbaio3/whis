@@ -14,10 +14,15 @@
                         class="form-control" 
                         placeholder="Email"
                         ngModel
-                        name="email">
+                        id="email"
+                        name="email"
+                        required>
                 <div class="input-group-append">
                   <span class="input-group-text">
-                   <fa-icon [icon]="['fas', 'check-circle']"></fa-icon>
+                    <fa-icon [icon]="['fas', 'check-circle']" 
+                    >
+                    <!-- [ngClass]="{'text-success': email.valid && (email.dirty || email.touched)}" -->
+                    </fa-icon>
                   </span>
                 </div>
               </div>
@@ -31,7 +36,8 @@
                         class="form-control" 
                         placeholder="*********"
                         ngModel
-                        name="password">
+                        name="password"
+                        required>
                 <div class="input-group-append">
                   <span class="input-group-text">
                    <fa-icon [icon]="['fas', 'check-circle']"></fa-icon>
@@ -42,7 +48,9 @@
             
             
             <div class="form-group">
-              <button [disabled]="formLogin.invalid" class="btn btn-primary submit-btn btn-block">Login</button>
+              <button *ngIf="!loading" [disabled]="formLogin.invalid" class="btn btn-primary submit-btn btn-block">Login</button>
+              <button *ngIf="loading" disabled class="btn btn-primary submit-btn btn-block">
+                <fa-icon [icon]="['fas', 'spinner']" [spin]="true"></fa-icon> Espere...</button>
             </div>
 
 
