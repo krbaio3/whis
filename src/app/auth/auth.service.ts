@@ -10,7 +10,7 @@ import * as firebase from 'firebase';
 import Swal from 'sweetalert2';
 
 // rxjs
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 // NGRX
@@ -20,6 +20,7 @@ import {
   ActivarLoadingAction,
   DesactivarLoadingAction
 } from '../shared/ui.actions';
+import { SetUserAction } from './auth.actions';
 
 // Modelo
 import { User } from './models/user.model';
@@ -28,6 +29,9 @@ import { User } from './models/user.model';
   providedIn: 'root'
 })
 export class AuthService {
+
+  private userSubscription: Subscription = new Subscription();
+  
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
@@ -37,7 +41,18 @@ export class AuthService {
 
   initAuthListener(): void {
     this.afAuth.authState.subscribe((firebaseUser: firebase.User) => {
-      console.log(firebaseUser);
+      if ( firebaseUser ) {
+        this.userSubscription = this.afDB.doc(`${firebaseUser.uid}/usuario`).valueChanges()
+          .subscribe(
+            (userObj: any) => {
+              console.log(userObj);
+              const newUser = new User(userObj);
+              this.store.dispatch( new SetUserAction(newUser));
+            }
+          );
+      } else {
+        this.userSubscription.unsubscribe();
+      }
     });
   }
 
