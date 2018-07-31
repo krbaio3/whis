@@ -29,9 +29,9 @@ import { User } from './models/user.model';
   providedIn: 'root'
 })
 export class AuthService {
-
   private userSubscription: Subscription = new Subscription();
-  
+  private usuario: User;
+
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
@@ -41,16 +41,17 @@ export class AuthService {
 
   initAuthListener(): void {
     this.afAuth.authState.subscribe((firebaseUser: firebase.User) => {
-      if ( firebaseUser ) {
-        this.userSubscription = this.afDB.doc(`${firebaseUser.uid}/usuario`).valueChanges()
-          .subscribe(
-            (userObj: any) => {
-              console.log(userObj);
-              const newUser = new User(userObj);
-              this.store.dispatch( new SetUserAction(newUser));
-            }
-          );
+      if (firebaseUser) {
+        this.userSubscription = this.afDB
+          .doc(`${firebaseUser.uid}/usuario`)
+          .valueChanges()
+          .subscribe((userObj: any) => {
+            console.log(userObj);
+            this.usuario = new User(userObj);
+            this.store.dispatch(new SetUserAction(this.usuario));
+          });
       } else {
+        this.usuario = null;
         this.userSubscription.unsubscribe();
       }
     });
@@ -126,5 +127,9 @@ export class AuthService {
         return firebaseUser != null;
       })
     );
+  }
+
+  getUsuario(): User {
+    return { ...this.usuario };
   }
 }
