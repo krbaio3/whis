@@ -1,5 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+
+// Idioma
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // NGRX
@@ -23,7 +28,8 @@ import {
   faExclamationCircle,
   faShippingFast,
   faSave,
-  faSpinner
+  faSpinner,
+  faTrashAlt
 } from '@fortawesome/free-solid-svg-icons';
 
 // Add an icon to the library for convenient access in other components
@@ -37,7 +43,8 @@ library.add(
   faExclamationCircle,
   faShippingFast,
   faSave,
-  faSpinner
+  faSpinner,
+  faTrashAlt
 );
 
 // Angular Material Module
@@ -64,6 +71,8 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 // Router
 import { AppRoutingModule } from './app-routing.module';
+
+registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
@@ -94,7 +103,7 @@ import { AppRoutingModule } from './app-routing.module';
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

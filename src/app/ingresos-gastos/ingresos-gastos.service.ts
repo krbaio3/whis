@@ -21,7 +21,7 @@ export class IngresosGastosService {
     private store: Store<AppState>
   ) {}
 
-  initIngresoGastoListener() {
+  initIngresoGastoListener(): void {
     this.ingresoGastoListenerSubscription = this.store
       .select('auth')
       .pipe(filter(auth => auth.user !== null))
@@ -31,7 +31,7 @@ export class IngresosGastosService {
       });
   }
 
-  cancelarSubscripciones() {
+  cancelarSubscripciones(): void {
     this.ingresoGastoListenerSubscription.unsubscribe();
     this.ingresoGastoItemsSubscription.unsubscribe();
   }
@@ -45,7 +45,7 @@ export class IngresosGastosService {
       .add({ ...ingresoGasto });
   }
 
-  private ingresoGastoItem(uid: string) {
+  private ingresoGastoItem(uid: string): void {
     this.ingresoGastoItemsSubscription = this.afDB
       .collection(`${uid}/ingresos-gastos/items`)
       // valueChanges() nos devuelve un array de objetos con el contenido que lo que tenga firebase.
@@ -65,5 +65,12 @@ export class IngresosGastosService {
       .subscribe((collection: any[]) => {
         this.store.dispatch(new SetItemsAction(collection));
       });
+  }
+
+  borrarIngresoGasto(uid: string): Promise<void> {
+    const user = this.authService.getUsuario();
+
+    return this.afDB.doc(`${user.uid}/ingresos-gastos/items/${uid}`)
+      .delete();
   }
 }
