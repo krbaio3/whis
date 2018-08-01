@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.reducer';
 import { Subscription } from 'rxjs';
@@ -9,12 +9,16 @@ import { IngresoGasto } from '../models/ingreso-gasto.model';
   templateUrl: './estadistica.component.html',
   styleUrls: ['./estadistica.component.scss']
 })
-export class EstadisticaComponent implements OnInit {
-  ingresos: number;
-  gastos: number;
+export class EstadisticaComponent implements OnInit, OnDestroy {
+  // Doughnut
+  public doughnutChartLabels: string[] = ['Ingresos', 'Gastos'];
+  public doughnutChartData: number[];
 
-  countIngresos: number;
-  countGastos: number;
+  public ingresos: number;
+  public gastos: number;
+
+  public countIngresos: number;
+  public countGastos: number;
 
   subscription: Subscription = new Subscription();
 
@@ -31,7 +35,7 @@ export class EstadisticaComponent implements OnInit {
     this.gastos = 0;
 
     this.countIngresos = 0;
-    this.countGastos= 0;
+    this.countGastos = 0;
 
     items.forEach(item => {
       switch (item.tipo) {
@@ -39,7 +43,7 @@ export class EstadisticaComponent implements OnInit {
           this.countIngresos++;
           this.ingresos += item.importe;
           break;
-          case 'Gasto':
+        case 'Gasto':
           this.countGastos++;
           this.gastos -= item.importe;
           break;
@@ -48,5 +52,10 @@ export class EstadisticaComponent implements OnInit {
           break;
       }
     });
+    this.doughnutChartData = [this.ingresos, this.gastos];
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

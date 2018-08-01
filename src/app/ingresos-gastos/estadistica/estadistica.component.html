@@ -80,10 +80,15 @@
   <div class="col-12 p-5" *ngIf="ingresos > 0 || gastos > 0">
     <div class="card card-statistics">
       <div class="card-body">
-        <h1 class="card-title">Gráfica</h1>
+        <h1 class="card-title text-center">Gráfica</h1>
 
-        <!-- gráfica ira aquí -->
-
+        <div style="display: block">
+          <canvas baseChart
+            [data]="doughnutChartData"
+            [labels]="doughnutChartLabels"
+            chartType="doughnut">
+          </canvas>
+        </div>
       </div>
     </div>
   </div>
