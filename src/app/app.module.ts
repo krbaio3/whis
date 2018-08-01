@@ -71,6 +71,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 // Router
 import { AppRoutingModule } from './app-routing.module';
+import { OrdenIngresoGastoPipe } from './ingresos-gastos/orden-ingreso-gasto.pipe';
 
 registerLocaleData(localeEs);
 
@@ -85,7 +86,8 @@ registerLocaleData(localeEs);
     DetalleComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    OrdenIngresoGastoPipe
   ],
   imports: [
     BrowserModule,
