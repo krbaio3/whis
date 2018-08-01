@@ -29,7 +29,8 @@ import {
   faShippingFast,
   faSave,
   faSpinner,
-  faTrashAlt
+  faTrashAlt,
+  faBuilding
 } from '@fortawesome/free-solid-svg-icons';
 
 // Add an icon to the library for convenient access in other components
@@ -44,7 +45,8 @@ library.add(
   faShippingFast,
   faSave,
   faSpinner,
-  faTrashAlt
+  faTrashAlt,
+  faBuilding
 );
 
 // Angular Material Module
@@ -73,6 +75,9 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { AppRoutingModule } from './app-routing.module';
 import { OrdenIngresoGastoPipe } from './ingresos-gastos/orden-ingreso-gasto.pipe';
 
+// Graficas
+import { ChartsModule } from 'ng2-charts';
+
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -94,6 +99,7 @@ registerLocaleData(localeEs);
     FontAwesomeModule,
     AppRoutingModule,
     FormsModule,
+    ChartsModule,
     ReactiveFormsModule,
     StoreModule.forRoot(appReducers),
     // Instrumentation must be imported after importing StoreModule (config is optional)
