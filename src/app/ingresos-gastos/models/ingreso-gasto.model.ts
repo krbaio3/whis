@@ -1,7 +1,9 @@
+import { Tipo } from './tipo.model';
+
 export class IngresoGasto {
   public descripcion: string;
   public importe: number;
-  public tipo: string;
+  public tipo: Tipo;
   public uid?: string;
 
   constructor(ingresoGastoObject: IngresoGastoObject) {
@@ -15,6 +17,6 @@ export class IngresoGasto {
 interface IngresoGastoObject {
   descripcion: string;
   importe: number;
-  tipo: string;
+  tipo: Tipo;
   uid?: string;
 }
