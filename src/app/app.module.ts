@@ -30,7 +30,8 @@ import {
   faSave,
   faSpinner,
   faTrashAlt,
-  faBuilding
+  faBuilding,
+  faHeart
 } from '@fortawesome/free-solid-svg-icons';
 
 // Add an icon to the library for convenient access in other components
@@ -46,7 +47,8 @@ library.add(
   faSave,
   faSpinner,
   faTrashAlt,
-  faBuilding
+  faBuilding,
+  faHeart
 );
 
 // Angular Material Module
@@ -77,6 +79,7 @@ import { OrdenIngresoGastoPipe } from './ingresos-gastos/orden-ingreso-gasto.pip
 
 // Graficas
 import { ChartsModule } from 'ng2-charts';
+import { CapitalizePipe } from './utils/capitalize.pipe';
 
 registerLocaleData(localeEs);
 
@@ -92,7 +95,8 @@ registerLocaleData(localeEs);
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    OrdenIngresoGastoPipe
+    OrdenIngresoGastoPipe,
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,
