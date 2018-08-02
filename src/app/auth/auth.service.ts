@@ -20,7 +20,7 @@ import {
   ActivarLoadingAction,
   DesactivarLoadingAction
 } from '../shared/ui.actions';
-import { SetUserAction } from './auth.actions';
+import { SetUserAction, UnSetUserAction } from './auth.actions';
 
 // Modelo
 import { User } from './models/user.model';
@@ -51,6 +51,7 @@ export class AuthService {
             this.store.dispatch(new SetUserAction(this.usuario));
           });
       } else {
+        this.store.dispatch(new UnSetUserAction());
         this.usuario = null;
         this.userSubscription.unsubscribe();
       }
@@ -112,6 +113,7 @@ export class AuthService {
     this.afAuth.auth
       .signOut()
       .then(() => {
+        this.store.dispatch(new UnSetUserAction());
         this.router.navigate(['/login']);
         Swal('LogOut', 'La sesión ha sido cerrada', 'success');
       })
