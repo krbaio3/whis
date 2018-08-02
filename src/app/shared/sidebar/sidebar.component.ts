@@ -36,6 +36,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   signOut(): void {
     this.authSrv.logOut();
+    this.ingresoGastoSrv.cancelarSubscripciones();
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

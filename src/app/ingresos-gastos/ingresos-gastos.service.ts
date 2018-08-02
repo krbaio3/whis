@@ -5,7 +5,7 @@ import { AuthService } from '../auth/auth.service';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.reducer';
 import { filter, map } from 'rxjs/operators';
-import { SetItemsAction } from './ingreso-gasto.action';
+import { SetItemsAction, UnSetItemsAction } from './ingreso-gasto.action';
 import { Subscription } from 'rxjs';
 
 @Injectable({
@@ -34,6 +34,7 @@ export class IngresosGastosService {
   cancelarSubscripciones(): void {
     this.ingresoGastoListenerSubscription.unsubscribe();
     this.ingresoGastoItemsSubscription.unsubscribe();
+    this.store.dispatch(new UnSetItemsAction());
   }
 
   crearIngresoGasto(ingresoGasto: IngresoGasto): Promise<DocumentReference> {

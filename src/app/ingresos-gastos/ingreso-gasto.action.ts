@@ -10,8 +10,8 @@ export class SetItemsAction implements Action {
   constructor(public items: IngresoGasto[]) {}
 }
 
-export class UnsetItemsAction implements Action {
+export class UnSetItemsAction implements Action {
   readonly type = UNSET_ITEMS;
 }
 
-export type acciones = SetItemsAction | UnsetItemsAction;
+export type acciones = SetItemsAction | UnSetItemsAction;
