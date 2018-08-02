@@ -6,6 +6,9 @@ import { IngresoGasto } from './models/ingreso-gasto.model';
 })
 export class OrdenIngresoGastoPipe implements PipeTransform {
   transform(item: IngresoGasto[]): IngresoGasto[] {
+    if (item == null) {
+      return [];
+    }
     return item.sort((a, b) => {
       if (a.tipo === 'Ingreso') {
         return -1;

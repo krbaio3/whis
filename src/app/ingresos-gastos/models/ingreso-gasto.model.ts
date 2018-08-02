@@ -1,4 +1,4 @@
-import { Tipo } from './tipo.model';
+import { Tipo } from './tipo.types';
 
 export class IngresoGasto {
   public descripcion: string;
