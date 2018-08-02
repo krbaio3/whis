@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Tipo } from './models/tipo.model';
+import { Tipo } from './models/tipo.types';
 import { IngresoGasto } from './models/ingreso-gasto.model';
 import { IngresosGastosService } from './ingresos-gastos.service';
 import Swal from 'sweetalert2';

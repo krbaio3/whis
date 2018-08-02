@@ -14,26 +14,33 @@ import { IngresosGastosService } from '../../ingresos-gastos/ingresos-gastos.ser
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit, OnDestroy {
-
   public nombre: string;
+  public withSideBar: string;
   public subscription: Subscription = new Subscription();
+  public sideBarSubscription: Subscription = new Subscription();
 
-  constructor(public authSrv: AuthService,
-              private store: Store<AppState>,
-              public ingresoGastoSrv: IngresosGastosService) {}
+  constructor(
+    public authSrv: AuthService,
+    private store: Store<AppState>,
+    public ingresoGastoSrv: IngresosGastosService
+  ) {}
 
   ngOnInit(): void {
-
-    this.subscription = this.store.select('auth')
-    .pipe(
-      filter(auth => auth.user != null)
-    )
-    .subscribe(
-      auth => {
+    this.subscription = this.store
+      .select('auth')
+      .pipe(filter(auth => auth.user != null))
+      .subscribe(auth => {
         this.nombre = auth.user.nombre;
         console.log(this.nombre);
-      }
-    );
+      });
+
+    this.sideBarSubscription = this.store
+      .select('ui')
+      .pipe(filter(isSideBar => isSideBar.isOpenSideBar != null))
+      .subscribe(showSideBar => {
+        console.log(showSideBar);
+        this.withSideBar = showSideBar.isOpenSideBar;
+      });
   }
 
   signOut(): void {
@@ -42,5 +49,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    this.sideBarSubscription.unsubscribe();
   }
 }

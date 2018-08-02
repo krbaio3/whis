@@ -31,7 +31,11 @@ import {
   faSpinner,
   faTrashAlt,
   faBuilding,
-  faHeart
+  faHeart,
+  faBell,
+  faFileAlt,
+  faBookmark,
+  faChartPie
 } from '@fortawesome/free-solid-svg-icons';
 
 // Add an icon to the library for convenient access in other components
@@ -48,7 +52,11 @@ library.add(
   faSpinner,
   faTrashAlt,
   faBuilding,
-  faHeart
+  faHeart,
+  faBell,
+  faFileAlt,
+  faBookmark,
+  faChartPie
 );
 
 // Angular Material Module
