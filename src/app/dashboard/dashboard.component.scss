@@ -1,0 +1,11 @@
+$break-small: 576px;
+$break-medium: 768px;
+
+.ajuste {
+  @media screen and (max-width: $break-small) {
+    padding-top: 3rem !important;
+  }
+  @media screen and (min-width: $break-medium) {
+    padding-top: 1.5rem;
+  }
+}
