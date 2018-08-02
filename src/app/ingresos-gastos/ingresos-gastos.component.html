@@ -2,44 +2,49 @@
     <div class="col-12">
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">Agregar Ingreso / Egreso</h4>
+            <h4 class="card-title">Agregar Ingreso / Gasto</h4>
             <p class="card-description">
-              Especifique el monto y el tipo
+              Especifique el importe y el tipo
             </p>
 
-            <form>
+            <form (ngSubmit)="crearIngresoGasto()" [formGroup]="formulario">
               
               <div class="form-group">
                 <label>Descripción</label>
                 <input type="text" 
                        class="form-control" 
                        placeholder="Descripción"
+                       formControlName="descripcion"
                        name="descripcion">
               </div>
 
               <div class="form-group">
-                  <label>Monto</label>
+                  <label>Importe</label>
                   <input type="number" 
                          class="form-control" 
-                         placeholder="Monto"
-                         name="monto">
+                         placeholder="Importe"
+                         formControlName="importe"
+                         name="importe">
                     <p>
-                      Debe de ser un monto positivo
+                      Debe de ser un importe positivo
                     </p>
                 </div>
 
               <div class="form-group">
                   <label>Tipo</label>
                   <br>
-                  <button type="button" class="btn btn-primary btn-block">Ingreso</button>
-                  <!-- <button type="button" class="btn btn-warning btn-block">Egreso</button> -->
+                    <button (click)="tipo = 'Gasto'" *ngIf="tipo === 'Ingreso'" type="button" class="btn btn-primary btn-block">Ingreso</button>
+                    <button (click)="tipo = 'Ingreso'" *ngIf="tipo === 'Gasto'" type="button" class="btn btn-warning btn-block">Gasto</button>
               </div>
 
               <hr>
-              <button type="button" class="btn btn-success mr-2">
+              <button *ngIf="!loading"[disabled]="formulario.invalid" type="submit" class="btn btn-success mr-2">
                 <fa-icon [icon]="['fa', 'save']"></fa-icon>
                 Agregar
               </button>
+              <button *ngIf="loading" disabled class="btn btn-success mr-2">
+                <fa-icon [icon]="['fas', 'spinner']" [spin]="true"></fa-icon> Espere...</button>
+
 
               <!-- 
                 <button disabled class="btn btn-success mr-2">

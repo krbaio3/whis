@@ -1,6 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { NgModule, LOCALE_ID } from '@angular/core';
+
+// Idioma
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+// NGRX
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { appReducers } from './app.reducer';
 
 // Entornos
 import { environment } from '../environments/environment';
@@ -17,7 +27,10 @@ import {
   faMoneyBillAlt,
   faExclamationCircle,
   faShippingFast,
-  faSave
+  faSave,
+  faSpinner,
+  faTrashAlt,
+  faBuilding
 } from '@fortawesome/free-solid-svg-icons';
 
 // Add an icon to the library for convenient access in other components
@@ -30,7 +43,10 @@ library.add(
   faMoneyBillAlt,
   faExclamationCircle,
   faShippingFast,
-  faSave
+  faSave,
+  faSpinner,
+  faTrashAlt,
+  faBuilding
 );
 
 // Angular Material Module
@@ -57,6 +73,12 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 // Router
 import { AppRoutingModule } from './app-routing.module';
+import { OrdenIngresoGastoPipe } from './ingresos-gastos/orden-ingreso-gasto.pipe';
+
+// Graficas
+import { ChartsModule } from 'ng2-charts';
+
+registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
@@ -69,18 +91,27 @@ import { AppRoutingModule } from './app-routing.module';
     DetalleComponent,
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    OrdenIngresoGastoPipe
   ],
   imports: [
     BrowserModule,
     FontAwesomeModule,
     AppRoutingModule,
     FormsModule,
+    ChartsModule,
+    ReactiveFormsModule,
+    StoreModule.forRoot(appReducers),
+    // Instrumentation must be imported after importing StoreModule (config is optional)
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production // Restrict extension to log-only mode
+    }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
