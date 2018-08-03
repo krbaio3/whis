@@ -10,6 +10,7 @@ import { dashboardRoutes } from './dashboard/dashboard.routing';
 
 // Guards
 import { AuthGuardService } from './auth/auth-guard.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const APP_ROUTES: Routes = [
   {
@@ -26,9 +27,17 @@ const APP_ROUTES: Routes = [
     path: 'register',
     component: RegisterComponent
   },
+  // {
+  //   path: '**',
+  //   redirectTo: ''
+  // }
+  { path: '',
+    redirectTo: '',
+    pathMatch: 'full'
+  },
   {
     path: '**',
-    redirectTo: ''
+    component: PageNotFoundComponent
   }
 
   //{ path: 'path/:routeParam', component: MyComponent },
