@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../app.reducer';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { User } from '../../auth/models/user.model';
 import { ActivarSideBarAction, DesactivarSideBarAction } from '../ui.actions';
 import { DiplaySideBar } from '../ui.types';
 
