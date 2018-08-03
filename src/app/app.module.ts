@@ -90,6 +90,7 @@ import { OrdenIngresoGastoPipe } from './ingresos-gastos/orden-ingreso-gasto.pip
 // Graficas
 import { ChartsModule } from 'ng2-charts';
 import { CapitalizePipe } from './utils/capitalize.pipe';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 registerLocaleData(localeEs);
 
@@ -106,7 +107,8 @@ registerLocaleData(localeEs);
     NavbarComponent,
     SidebarComponent,
     OrdenIngresoGastoPipe,
-    CapitalizePipe
+    CapitalizePipe,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
