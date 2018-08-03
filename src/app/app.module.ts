@@ -35,7 +35,8 @@ import {
   faBell,
   faFileAlt,
   faBookmark,
-  faChartPie
+  faChartPie,
+  faBars
 } from '@fortawesome/free-solid-svg-icons';
 
 // Add an icon to the library for convenient access in other components
@@ -56,7 +57,8 @@ library.add(
   faBell,
   faFileAlt,
   faBookmark,
-  faChartPie
+  faChartPie,
+  faBars
 );
 
 // Angular Material Module
