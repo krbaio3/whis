@@ -15,49 +15,52 @@ import { appReducers } from './app.reducer';
 // Entornos
 import { environment } from '../environments/environment';
 
-// Iconos
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import {
-  faCheckCircle,
-  faClipboardList,
-  faSignOutAlt,
-  faTable,
-  faTachometerAlt,
-  faMoneyBillAlt,
-  faExclamationCircle,
-  faShippingFast,
-  faSave,
-  faSpinner,
-  faTrashAlt,
-  faBuilding,
-  faHeart,
-  faBell,
-  faFileAlt,
-  faBookmark,
-  faChartPie
-} from '@fortawesome/free-solid-svg-icons';
+// CoreModule
+import { CoreModule } from './core/core.module';
 
-// Add an icon to the library for convenient access in other components
-library.add(
-  faCheckCircle,
-  faClipboardList,
-  faSignOutAlt,
-  faTable,
-  faTachometerAlt,
-  faMoneyBillAlt,
-  faExclamationCircle,
-  faShippingFast,
-  faSave,
-  faSpinner,
-  faTrashAlt,
-  faBuilding,
-  faHeart,
-  faBell,
-  faFileAlt,
-  faBookmark,
-  faChartPie
-);
+// Iconos
+// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+// import { library } from '@fortawesome/fontawesome-svg-core';
+// import {
+//   faCheckCircle,
+//   faClipboardList,
+//   faSignOutAlt,
+//   faTable,
+//   faTachometerAlt,
+//   faMoneyBillAlt,
+//   faExclamationCircle,
+//   faShippingFast,
+//   faSave,
+//   faSpinner,
+//   faTrashAlt,
+//   faBuilding,
+//   faHeart,
+//   faBell,
+//   faFileAlt,
+//   faBookmark,
+//   faChartPie
+// } from '@fortawesome/free-solid-svg-icons';
+
+// // Add an icon to the library for convenient access in other components
+// library.add(
+//   faCheckCircle,
+//   faClipboardList,
+//   faSignOutAlt,
+//   faTable,
+//   faTachometerAlt,
+//   faMoneyBillAlt,
+//   faExclamationCircle,
+//   faShippingFast,
+//   faSave,
+//   faSpinner,
+//   faTrashAlt,
+//   faBuilding,
+//   faHeart,
+//   faBell,
+//   faFileAlt,
+//   faBookmark,
+//   faChartPie
+// );
 
 // Angular Material Module
 // import { AngularMaterialModule } from './angular-material/angular-material.module';
@@ -108,7 +111,7 @@ registerLocaleData(localeEs);
   ],
   imports: [
     BrowserModule,
-    FontAwesomeModule,
+    CoreModule,
     AppRoutingModule,
     FormsModule,
     ChartsModule,
