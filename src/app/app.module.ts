@@ -5,7 +5,7 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // NGRX
 import { StoreModule } from '@ngrx/store';
@@ -18,64 +18,16 @@ import { environment } from '../environments/environment';
 // CoreModule
 import { CoreModule } from './core/core.module';
 
-// Iconos
-// import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import {
-//   faCheckCircle,
-//   faClipboardList,
-//   faSignOutAlt,
-//   faTable,
-//   faTachometerAlt,
-//   faMoneyBillAlt,
-//   faExclamationCircle,
-//   faShippingFast,
-//   faSave,
-//   faSpinner,
-//   faTrashAlt,
-//   faBuilding,
-//   faHeart,
-//   faBell,
-//   faFileAlt,
-//   faBookmark,
-//   faChartPie
-// } from '@fortawesome/free-solid-svg-icons';
-
-// // Add an icon to the library for convenient access in other components
-// library.add(
-//   faCheckCircle,
-//   faClipboardList,
-//   faSignOutAlt,
-//   faTable,
-//   faTachometerAlt,
-//   faMoneyBillAlt,
-//   faExclamationCircle,
-//   faShippingFast,
-//   faSave,
-//   faSpinner,
-//   faTrashAlt,
-//   faBuilding,
-//   faHeart,
-//   faBell,
-//   faFileAlt,
-//   faBookmark,
-//   faChartPie
-// );
-
-// Angular Material Module
-// import { AngularMaterialModule } from './angular-material/angular-material.module';
+// Modulo Autentificación
+import { AuthModule } from './auth/auth.module';
 
 // FireBase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireStorageModule } from 'angularfire2/storage';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 
 // Components
 import { AppComponent } from './app.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IngresosGastosComponent } from './ingresos-gastos/ingresos-gastos.component';
 import { EstadisticaComponent } from './ingresos-gastos/estadistica/estadistica.component';
@@ -98,8 +50,6 @@ registerLocaleData(localeEs);
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    RegisterComponent,
     DashboardComponent,
     IngresosGastosComponent,
     EstadisticaComponent,
@@ -114,8 +64,8 @@ registerLocaleData(localeEs);
   imports: [
     BrowserModule,
     CoreModule,
+    AuthModule,
     AppRoutingModule,
-    FormsModule,
     ChartsModule,
     ReactiveFormsModule,
     StoreModule.forRoot(appReducers),
@@ -126,7 +76,6 @@ registerLocaleData(localeEs);
     }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]
