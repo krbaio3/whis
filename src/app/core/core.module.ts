@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AngularMaterialModule } from './angular-material/angular-material.module';
+// import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { FontawesomeModule } from './fontawesome/fontawesome.module';
+import { CapitalizePipe } from './utils/capitalize.pipe';
 
 @NgModule({
   imports: [
-    CommonModule,
-    AngularMaterialModule,
+    // AngularMaterialModule,
     FontawesomeModule
   ],
-  declarations: [],
+  declarations: [
+    CapitalizePipe
+  ],
   exports: [
-    AngularMaterialModule,
-    FontawesomeModule
+    // AngularMaterialModule,
+    FontawesomeModule,
+    CapitalizePipe
   ]
 })
 export class CoreModule { }
