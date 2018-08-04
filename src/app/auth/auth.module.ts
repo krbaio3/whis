@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+// Para que funcionen los links de router-link
+import { RouterModule } from '@angular/router';
+
 // Core
 import { CoreModule } from '../core/core.module';
 
@@ -18,6 +21,7 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
     AngularFireAuthModule,
     CoreModule,
+    RouterModule
   ],
   declarations: [
     LoginComponent,
