@@ -6,6 +6,7 @@ import { RegisterComponent } from './auth/register/register.component';
 
 // Pagina no encontrada
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthGuardService } from './auth/auth-guard.service';
 
 const APP_ROUTES: Routes = [
   {
@@ -21,7 +22,8 @@ const APP_ROUTES: Routes = [
     // para cargar el módulo en LAzyLoad, referenciamos la ruta del módulo primero + #(hash) + Nombre_del_Modulo
     // puede dar fallo en local la primera vez, parar el servidor y volver a arrancar
     loadChildren:
-      './ingresos-gastos/ingresos-gastos.module#IngresosGastosModule'
+      './ingresos-gastos/ingresos-gastos.module#IngresosGastosModule',
+    canLoad: [AuthGuardService]
   },
   {
     path: '**',
