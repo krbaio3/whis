@@ -23,6 +23,9 @@ import { ChartsModule } from 'ng2-charts';
 // Routing
 import { DashboardRoutingModule } from '../dashboard/dashboard-routing.module';
 
+// NGRX LazyLoad
+import { StoreModule } from '@ngrx/store';
+import { ingresoGastoReducer } from './ingreso-gasto.reducer';
 
 @NgModule({
   imports: [
@@ -31,7 +34,8 @@ import { DashboardRoutingModule } from '../dashboard/dashboard-routing.module';
     ReactiveFormsModule,
     ChartsModule,
     SharedModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    StoreModule.forFeature('ingresoGasto', ingresoGastoReducer)
   ],
   declarations: [
     DashboardComponent,
