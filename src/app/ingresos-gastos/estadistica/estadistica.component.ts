@@ -1,8 +1,17 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../app.reducer';
+// Ver notas más abajo
+// import { AppState } from '../../app.reducer';
+import { AppState } from '../ingreso-gasto.reducer';
 import { Subscription } from 'rxjs';
 import { IngresoGasto } from '../models/ingreso-gasto.model';
+
+// Para el uso del Lazy Loaded, el AppState no se puede coger del RouterInitializer,
+// porque no está extendido del que contiene el IngresoGasto (LazyLoad).
+// Funcionaría igual cogiendo el state del raíz, que del ingreso-gasto.reducer.
+// La ventaja es que al estar haciendo la app desde cero, tenemos el Intelligence.
+// Se le podía haber puesto otro nombre para diferenciarnos, por ejemplo
+// import * as fromIngresoGasto from '../ingreso-gasto.reducer'; para que se diferenciara
 
 @Component({
   selector: 'app-estadistica',
