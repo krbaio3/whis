@@ -3,21 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
-// Rutas hijas
-import { dashboardRoutes } from './dashboard/dashboard.routing';
-
-// Guards
+// Pagina no encontrada
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuardService } from './auth/auth-guard.service';
 
 const APP_ROUTES: Routes = [
-  {
-    path: '',
-    component: DashboardComponent,
-    children: dashboardRoutes,
-    canActivate: [AuthGuardService]
-  },
   {
     path: 'login',
     component: LoginComponent
@@ -27,15 +18,17 @@ const APP_ROUTES: Routes = [
     component: RegisterComponent
   },
   {
+    path: '',
+    // para cargar el módulo en LAzyLoad, referenciamos la ruta del módulo primero + #(hash) + Nombre_del_Modulo
+    // puede dar fallo en local la primera vez, parar el servidor y volver a arrancar
+    loadChildren:
+      './ingresos-gastos/ingresos-gastos.module#IngresosGastosModule',
+    canLoad: [AuthGuardService]
+  },
+  {
     path: '**',
-    redirectTo: ''
+    component: PageNotFoundComponent
   }
-
-  //{ path: 'path/:routeParam', component: MyComponent },
-  //{ path: 'staticPath', component: ... },
-  //{ path: '**', component: ... },
-  //{ path: 'oldPath', redirectTo: '/staticPath' },
-  //{ path: ..., component: ..., data: { message: 'Custom' }
 ];
 
 @NgModule({
