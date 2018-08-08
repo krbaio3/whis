@@ -1,7 +1,8 @@
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
     <a class="navbar-brand brand-logo" (click)="openSideBar()">
-     <h3 class="font-weight-bold text-secondary">Code</h3><span class="text-warning">Solutions</span>
+      <h3 class="font-weight-bold text-secondary">Code</h3>
+      <span class="text-warning">Solutions</span>
     </a>
     <a class="navbar-brand brand-logo-mini mt-2" (click)="openSideBar()">
       <fa-icon [icon]="['fas', 'bars']" class="color-burger icon-md"></fa-icon>
@@ -9,17 +10,20 @@
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center">
     <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
-      <li class="nav-item">
-        <a href="#" class="nav-link">Schedule
+
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/bill">
+          <fa-icon [icon]="['fas', 'file-invoice']" class="mr-1"></fa-icon>Facturas
           <span class="badge badge-primary ml-1">New</span>
         </a>
       </li>
-      <li class="nav-item active">
-        <a href="#" class="nav-link">
-          <fa-icon [icon]="['fas', 'chart-pie']" class="mr-1"></fa-icon>Reports</a>
+
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/reports">
+          <fa-icon [icon]="['fas', 'chart-pie']" class="mr-1"></fa-icon>Reportes</a>
       </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/score">
           <fa-icon [icon]="['fas', 'bookmark']" class="mr-1"></fa-icon>Score</a>
       </li>
     </ul>
