@@ -22,6 +22,14 @@ notifications:
       - krbaio3@gmail.com
     on_success: never # default: change
     on_failure: always # default: always
+env:
+  global:
+    - apiKey=$apiKey
+    - authDomain=$authDomain
+    - databaseURL=$databaseURL
+    - projectId=$projectId
+    - storageBucket=$storageBucket
+    - messagingSenderId=$messagingSenderId
 deploy:
   - provider: heroku
     api_key:
