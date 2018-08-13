@@ -43,3 +43,5 @@ package-lock\.json
 yarn\.lock
 
 \.history/
+
+src/environments/environment\.dev\.ts
