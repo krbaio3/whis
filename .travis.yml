@@ -22,6 +22,14 @@ notifications:
       - krbaio3@gmail.com
     on_success: never  # default: change
     on_failure: always # default: always
+env:
+  global:
+    - apiKey=$apiKey
+    - authDomain=$authDomain
+    - databaseURL=$databaseURL
+    - projectId=$projectId
+    - storageBucket=$storageBucket
+    - messagingSenderId=$messagingSenderId
   slack:
     secure: oXp+O19c7j5hl7S+VUhomBEMvia9RYeBRHsW6K5vct20bHvFy5wD1A4G+3I/i+6kmGMAzv6NHFywkT6hJsc9Rz4NucyO6WJVkU2auflh9EmtNgiUDhEKC8/uLbEPiI6UqY7DSuOfEEzbitp1Vhm9iC9te6dkhfH6xKzZL6QhHqXN44+ta+TQr0vJxyId7OqVZhRyh7QzMG1Y9oZz52hTdSCqBoq4gklME+XN3G4smBolgs/O4glpDjdeSh5uWBv/PXuAZ46Sr3ZB3d/pocjV1X6uUppJwnWF6PjsHaB4jvVa2+cZmkUPIcG+FroLRcf+KI+sidiHtCWLZQi+0ZHF7yb3DDmstuu+b7JdNvI/HniaaMGvdNWhngFULLg0JX9jcPeCz9r0VBlRjhKUUWVU6bgB9KPts4yo/jwUvt0o2omwJwWlPVvHUcd2xsvaJbhh8g+I0XhOFj1Bhn1kE3iEqpwB6aPSXFIpFhV56JxnMmW9Te0K1VMW8AoW0lzRI3nBmtY201TrjpLKEwjR0XEWoi4YbWuOcZfel4+byRzTD7Bh5dBE9Btmc9ViCfUTZiI/s2E7zhInAlk0exGCYJF7C50WPb6hb/b0ZZz5AzynW8Z4ZScHH69/a9iveyz3IjoEe3RNPT7UTOd/GjzIPkvaY2kbXmGsudyqfxnd3cq22EM=
 deploy:
