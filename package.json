@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "config": "ts-node ./src/set-env.ts",
-    "start": "ng serve --configuration=develop",
+    "start": "ng serve --configuration=develop -o",
     "env": "cross-env apiKey=AIzaSyAmHqA1vRSd-kOhaSNkiME5XM1W-Ca--DU authDomain=whis-bc61d.firebaseapp.com databaseURL=https://whis-bc61d.firebaseio.com projectId=whis-bc61d storageBucket=whis-bc61d.appspot.com messagingSenderId=1852983527 npm run config -- --environment=dev",
     "build": "npm run config -- --environment=prod && ng build --prod",
     "test": "ng test",
