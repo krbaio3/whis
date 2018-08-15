@@ -22,7 +22,8 @@ import {
   faBookmark,
   faChartPie,
   faBars,
-  faFileInvoice
+  faFileInvoice,
+  faCar
 } from '@fortawesome/free-solid-svg-icons';
 
 // Add an icon to the library for convenient access in other components
@@ -45,7 +46,8 @@ library.add(
   faBookmark,
   faChartPie,
   faBars,
-  faFileInvoice
+  faFileInvoice,
+  faCar
 );
 
 @NgModule({

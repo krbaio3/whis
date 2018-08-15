@@ -30,15 +30,16 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 // Router
 import { AppRoutingModule } from './app-routing.module';
 
+// Angular Material
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 registerLocaleData(localeEs);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PageNotFoundComponent
-  ],
+  declarations: [AppComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     CoreModule,
     AuthModule,
     AppRoutingModule,
@@ -49,7 +50,7 @@ registerLocaleData(localeEs);
       logOnly: environment.production // Restrict extension to log-only mode
     }),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
+    AngularFirestoreModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es' }],
   bootstrap: [AppComponent]

@@ -1,14 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import {
+  MatInputModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatSortModule,
+  MatTableModule
+} from '@angular/material';
+
 // Hammer
 import 'hammerjs';
 
-// Angular Material
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 @NgModule({
-  imports: [CommonModule, BrowserAnimationsModule],
-  declarations: []
+  imports: [
+    CommonModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule
+  ],
+  exports: [
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule
+  ]
 })
 export class AngularMaterialModule {}
