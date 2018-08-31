@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
-// import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { FontawesomeModule } from './fontawesome/fontawesome.module';
 import { CapitalizePipe } from './utils/capitalize.pipe';
 
 @NgModule({
   imports: [
-    // AngularMaterialModule,
+    AngularMaterialModule,
     FontawesomeModule
   ],
   declarations: [
     CapitalizePipe
   ],
   exports: [
-    // AngularMaterialModule,
+    AngularMaterialModule,
     FontawesomeModule,
     CapitalizePipe
   ]

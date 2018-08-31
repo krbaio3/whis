@@ -30,6 +30,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 // Router
 import { AppRoutingModule } from './app-routing.module';
 
+// Hammer (touch)
+import 'hammerjs';
+
+// Animaciones
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -40,6 +46,7 @@ registerLocaleData(localeEs);
   imports: [
     BrowserModule,
     CoreModule,
+    BrowserAnimationsModule,
     AuthModule,
     AppRoutingModule,
     StoreModule.forRoot(appReducers),
